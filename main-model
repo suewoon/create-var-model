@@ -1,0 +1,24 @@
+%   Model       CRUDE Series    Transformation from CRUDE Data to Model Time Series
+%   --------    -----------     --------------------------------------------------
+%   rBRENTP     BRENTP          rBRENTP = diff(log(BRENTP))
+%   rDEF        GDPDEF          rDEF = diff(log(GDPDEF))
+%   rWAGES      COE             rWAGE = diff(log(COE))
+%   rHOURS      HOANBS          rWORK = diff(log(WORK))
+%   rTB3        TB3MS           rTB3 = 0.01*TB3MS
+%   rCONS       PCEC            rCONS = diff(log(PCEC))
+%   rINV        GPDI            rINV = diff(log(GPDI))
+%   rUNEMP      UNRATE          rUNEMP = 0.01*UNRATE
+
+Y = [rBRENTP, rDEF, rWAGES, rHOURS, rTB3, rCONS, rINV, rUNEMP];
+iY = [GDP, DEF, WAGES, HOURS, TB3, CONS, INV, UNEMP];
+
+YSeries = {'Output (GDP)', 'Prices', 'Total Wages', 'Hours Worked', ...
+	'Cash Rate', 'Consumption', 'Private Investment', 'Unemployment'};
+YAbbrev = {'GDP', 'DEF', 'WAGES', 'HOURS', 'TB3', 'CONS', 'INV', 'UNEMP'};
+
+YInfo = 'Crude oil price model';
+
+n = numel(YSeries);
+
+fprintf('The date range for available data is %s to %s.\n', ...
+	datestr(dates(1),1),datestr(dates(end),1));
