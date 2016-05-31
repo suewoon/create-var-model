@@ -1,0 +1,54 @@
+% Remove dates with NaN values
+
+ii = any(isnan(Data),2);
+dates(ii) = [];
+Data(ii,:) = [];
+DataTable(ii,:) = [];
+
+% Log series
+
+CONS = log(DataTable.PCEC);
+CPI = log(DataTable.CPIAUCSL);
+DEF = log(DataTable.GDPDEF);
+GCE = log(DataTable.GCE);
+GDP = log(DataTable.GDP);
+HOURS = log(DataTable.HOANBS);
+INV = log(DataTable.GPDI);
+M1 = log(DataTable.M1SL);
+M2 = log(DataTable.M2SL);
+WAGES = log(DataTable.COE);
+
+% Interest rates (annual)
+
+rFED = 0.01*(DataTable.FEDFUNDS);
+rG10 = 0.01*(DataTable.GS10);
+rTB3 = 0.01*(DataTable.TB3MS);
+
+% Integrated rates
+
+FED = ret2tick(0.25*rFED);
+FED = log(FED(2:end));
+G10 = ret2tick(0.25*rG10);
+G10 = log(G10(2:end));
+TB3 = ret2tick(0.25*rTB3);
+TB3 = log(TB3(2:end));
+
+% Unemployment rate
+
+rUNEMP = 0.01*(DataTable.UNRATE);
+
+UNEMP = ret2tick(0.25*rUNEMP);
+UNEMP = log(UNEMP(2:end));
+
+% Annualized rates
+
+rCONS = [ 4*mean(diff(CONS(1:5))); 4*diff(CONS) ];
+rCPI = [ 4*mean(diff(CPI(1:5))); 4*diff(CPI) ];
+rDEF = [ 4*mean(diff(DEF(1:5))); 4*diff(DEF) ];
+rGCE = [ 4*mean(diff(GCE(1:5))); 4*diff(GCE) ];
+rGDP = [ 4*mean(diff(GDP(1:5))); 4*diff(GDP) ];
+rHOURS = [ 4*mean(diff(HOURS(1:5))); 4*diff(HOURS) ];
+rINV = [ 4*mean(diff(INV(1:5))); 4*diff(INV) ];
+rM1 = [ 4*mean(diff(M1(1:5))); 4*diff(M1) ];
+rM2 = [ 4*mean(diff(M2(1:5))); 4*diff(M2) ];
+rWAGES = [ 4*mean(diff(WAGES(1:5))); 4*diff(WAGES) ];
