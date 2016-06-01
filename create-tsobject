@@ -1,6 +1,6 @@
 create time series object in order to store data 
 
-import brent.dat 
+import model1.dat 
 
 brentp = timeseries(count(:,1), 1:24,'name', 'intersection1'); %1st column .. brent monthly oil price 
 duabip = timeseries(count(:,2), 1:24,'name', 'intersection2'); %2nd column .. dubai monthly oil price 
@@ -11,10 +11,21 @@ consump = timeseries(count(:,5), 1:24,'name', 'intersection4'); %5th column ..
 get(brentp) 
 brentp.DataInfo 
 brentp.DataInfo.Units = '$';
-brenp[.DataInfo
+brenp.DataInfo
 
 brentp.TimeInfo.Units = 'months';
 duabip.TimeInfo.Units = 'months';
 stocklv.TimeInfo.Units = 'months';
 prod.TimeInfo.Units = 'months';
 consump.TimeInfo.Units = 'months';
+
+e1 = tsdata.event('BrentPrice',1); %
+e1.Units = 'months';            % Specify the units for month
+brentp = addevent(brentp,e1);  % Add the event to count1
+duabip = addevent(duabip,e1);  
+stocklv = addevent(stocklv,e1);  
+consump = addevent(consump,e1); 
+
+figure
+plot(brentp) 
+tsc = tscollection({brentp,duabip,stocklv,prod,consump},'name', 'model1')
