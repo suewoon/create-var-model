@@ -1,0 +1,20 @@
+create time series object in order to store data 
+
+import brent.dat 
+
+brentp = timeseries(count(:,1), 1:24,'name', 'intersection1'); %1st column .. brent monthly oil price 
+duabip = timeseries(count(:,2), 1:24,'name', 'intersection2'); %2nd column .. dubai monthly oil price 
+stocklv = timeseries(count(:,3), 1:24,'name', 'intersection3);  %3rd column .. OPEC crude oil stock level 
+prod = timeseries(count(:,4), 1:24,'name', 'intersection4'); %4th column .. 
+consump = timeseries(count(:,5), 1:24,'name', 'intersection4'); %5th column ..
+
+get(brentp) 
+brentp.DataInfo 
+brentp.DataInfo.Units = '$';
+brenp[.DataInfo
+
+brentp.TimeInfo.Units = 'months';
+duabip.TimeInfo.Units = 'months';
+stocklv.TimeInfo.Units = 'months';
+prod.TimeInfo.Units = 'months';
+consump.TimeInfo.Units = 'months';
