@@ -2,9 +2,7 @@
 % -----------     ----------------------------------------------------------------
 % BRENTP          Brent crude oil price 
 % DUBAIP          Dubai crude oil price 
-% CPIAUCSL        Consumer price index
-% FEDFUNDS        Effective federal funds rate
 % STOCKLV         Stock level of OPEC country
 % PROD            Crude oil production 
-% CONSUM          Crude oil consumption
+
 .. and so on 
